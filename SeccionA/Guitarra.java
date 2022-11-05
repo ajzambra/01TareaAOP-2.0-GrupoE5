@@ -1,11 +1,12 @@
 //ADAPTER - PARADIGMA ORIENTADO A OBJETOS
+
+//target
 public abstract class Guitarra{
 	abstract public void encender();
 	abstract public void apagar();
 }
 
 public class GuitarraElectrica extends Guitarra() {
-	//atributos
 	public void GuitarraElectrica() {
 		super();
 	}
@@ -17,8 +18,8 @@ public class GuitarraElectrica extends Guitarra() {
 	}
 }
 
+//adaptee
 public class GuitarraAcustica extends Guitarra() {
-	//atributos
 	public void GuitarraAcustica() {
 		super();
 	}
@@ -30,6 +31,7 @@ public class GuitarraAcustica extends Guitarra() {
 	}
 }
 
+//adapter
 public class GuitarraAcusticaAdapter extends Guitarra() {
 	private GuitarraAcustica guitarraAcustica;
 	
@@ -42,5 +44,19 @@ public class GuitarraAcusticaAdapter extends Guitarra() {
 	}
 	public void apagar() {
 		this.guitarraAcustica.dejar();
+	}
+}
+
+public class Main{
+	
+	public static void main(String args[]) {
+		
+		Guitarra guitarra1 = new GuitarraElectrica();
+		guitarra1.encender(); //"Encendiendo guitarra"
+		guitarra1.apagar(); //"Apagando guitarra"
+		
+		Guitarra guitarra2 = new GuitarraAcusticaAdapter();
+		guitarra2.encender(); //"Tocando Guitarra"
+		guitarra2.apagar(); //"Dejar de tocar guitarra"
 	}
 }
